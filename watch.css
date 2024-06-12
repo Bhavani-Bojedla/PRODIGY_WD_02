@@ -12,13 +12,15 @@ body {
 }
 p{
     font-size: 2rem;
+    margin-top: 2.5rem;
+    color: #afafaf;
 }
 .stopwatch {
     text-align: center;
     background: rgb(16, 15, 15);
     padding: 20px;
-    height: 17em;
-    width: 17rem;
+    height: 20rem;
+    width: 20rem;
     border-radius: 50%;
     border: 5px solid rgb(55,1,63);
     box-shadow: 0 0 100px rgb(55,1,63);
@@ -29,9 +31,10 @@ p{
     color: #afafaf;
 }
 #display {
-    font-size: 4em;
-    margin-bottom: 10px;
-    margin-top: rem;
+    font-size: 3.5em;
+    margin-top: 3.5rem;
+    display: flex;
+    justify-content: center;
 }
 
 .controls {
