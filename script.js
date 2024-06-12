@@ -1,5 +1,3 @@
-// script.js
-
 let timer;
 let startTime;
 let elapsedTime = 0;
@@ -11,19 +9,16 @@ const lapBtn = document.getElementById('lapBtn');
 const laps = document.getElementById('laps');
 
 function formatTime(time) {
-    const date = new Date(time);
-    const hours=String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(1, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
-    const milliseconds = String(date.getMilliseconds()).padStart(3, '0').slice(0, 2);
-    return `${hours}:${seconds}:${milliseconds}`;
+    const milliseconds = Math.floor((time % 1000) / 10).toString().padStart(2, '0');
+    const seconds = Math.floor((time / 1000) % 60).toString().padStart(2, '0');
+    const minutes = Math.floor((time / (1000 * 60)) % 60).toString().padStart(2, '0');
+    const hours = Math.floor((time / (1000 * 60 * 60)) % 24).toString().padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}:${milliseconds}`;
 }
 
 function updateDisplay() {
-    elapsedTime =Date.now()  - startTime;
-    
+    elapsedTime = Date.now() - startTime;
     display.textContent = formatTime(elapsedTime);
-    console.log(formatTime(Date.now()));
 }
 
 function startStop() {
@@ -43,10 +38,11 @@ function reset() {
     clearInterval(timer);
     isRunning = false;
     elapsedTime = 0;
-    display.textContent = '00:00:00';
+    display.textContent = '00:00:00:00';
     startStopBtn.textContent = 'Start';
     laps.innerHTML = '';
 }
+
 function lap() {
     if (isRunning) {
         const lapTime = formatTime(Date.now() - startTime);
